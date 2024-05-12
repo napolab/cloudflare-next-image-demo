@@ -8,9 +8,16 @@ if (env.NODE_ENV === "development") {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    ...(env.NODE_ENV !== "development"
-      ? { loader: "custom", loaderFile: "./image-loader.js" }
-      : {}),
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "public.napochaan.dev",
+      },
+    ],
+    deviceSizes: [320, 420, 768, 1024, 1200].flatMap((size) => [
+      size,
+      size * 2,
+    ]),
   },
 };
 

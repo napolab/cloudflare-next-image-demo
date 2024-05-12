@@ -1,30 +1,16 @@
 {
-  "name": "app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "cloudflare-next-image-demo",
+  "type": "module",
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@hono/zod-validator": "^0.2.1",
-    "hono": "^4.3.5",
-    "next": "14.2.3",
-    "react": "^18",
-    "react-dom": "^18",
-    "zod": "^3.23.8"
+    "build": "turbo build"
   },
   "devDependencies": {
-    "@cloudflare/next-on-pages": "^1.11.3",
-    "@cloudflare/workers-types": "^4.20240502.0",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "eslint": "^8",
-    "eslint-config-next": "14.2.3",
-    "eslint-plugin-next-on-pages": "^1.11.3",
-    "typescript": "^5"
-  }
+    "@types/bun": "^1.1.1",
+    "turbo": "^1.13.3",
+    "typescript": "^5.4.5"
+  },
+  "workspaces": [
+    "projects/*"
+  ],
+  "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }
