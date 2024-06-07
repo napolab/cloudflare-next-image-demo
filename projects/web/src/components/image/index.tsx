@@ -42,7 +42,7 @@ const Image = (props: Props) => {
       {...props}
       onLoad={handleLoad}
       alt={props.alt}
-      placeholder="empty"
+      placeholder={isPlaceholderBlur ? "empty" : props.placeholder}
       style={isPlaceholderBlur && loading ? placeholderStyle : props.style}
     />
   );
