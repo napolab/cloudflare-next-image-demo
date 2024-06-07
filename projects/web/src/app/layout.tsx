@@ -6,6 +6,31 @@ export const metadata: Metadata = {
   title:
     "Demo of `next/image` using Cloudflare Transform images | napochaan.dev",
   description: "Demo of next/image using Cloudflare Transform images",
+  openGraph: {
+    title: "Demo of `next/image` using Cloudflare Transform images",
+    description: "Demo of next/image using Cloudflare Transform images",
+    type: "website",
+    url: "https://next-demo.napochaan.dev",
+    images: [
+      {
+        url: "https://next-demo.napochaan.dev/images/ogp.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary",
+    creatorId: "@naporin24690",
+    title: "Demo of `next/image` using Cloudflare Transform images",
+    images: [
+      {
+        url: "https://next-demo.napochaan.dev/images/ogp.png",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
