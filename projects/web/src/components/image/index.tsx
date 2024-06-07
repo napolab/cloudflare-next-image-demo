@@ -35,7 +35,6 @@ const Image = (props: Props) => {
         : {},
     [props.blurDataURL, props.placeholder, props.style],
   );
-  console.log(placeholderStyle, isPlaceholderBlur && loading);
 
   return (
     <NextImage

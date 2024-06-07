@@ -1,0 +1,9 @@
+:root {
+  --leading-trim: calc((1em - 1lh) / 2);
+}
+
+@supports not (top: 1lh) {
+  :root {
+    --leading-trim: 0px; /* `px`などの単位が必要 */
+  }
+}

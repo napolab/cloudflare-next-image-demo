@@ -1,116 +1,105 @@
 import Image from "@components/image";
 import { formatBlurURL } from "@components/image/helper";
 import image from "@images/main.png";
+import styles from "./page.module.css";
+import type { StaticImport } from "next/dist/shared/lib/get-img-props";
+import { ReactNode } from "react";
 
 export const runtime = "edge";
 
+const Article = ({
+  title,
+  subTitle,
+  src,
+  alt,
+}: {
+  title: string;
+  subTitle: ReactNode;
+  src: StaticImport | string;
+  alt: string;
+}) => {
+  const imageSizes = [
+    { size: "large", width: 1000, height: 500 },
+    { size: "medium", width: 400, height: 200 },
+    { size: "small", width: 100, height: 50 },
+  ];
+
+  return (
+    <article className={styles.article}>
+      <hgroup className={styles.hgroup}>
+        <h2 className={styles.h2}>{title}</h2>
+        {subTitle}
+      </hgroup>
+
+      <div className={styles.images}>
+        {imageSizes.map((img) => (
+          <figure key={img.size} className={styles.figure}>
+            <Image
+              src={src}
+              blurDataURL={
+                typeof src === "string"
+                  ? formatBlurURL(src, { blur: 10 })
+                  : undefined
+              }
+              alt={`${alt} ${img.size} image`}
+              placeholder="blur"
+              width={img.width}
+              height={img.height}
+              style={{ width: "100%", height: "auto", objectFit: "cover" }}
+            />
+            <figcaption>
+              {img.size}({img.width} x {img.height})
+            </figcaption>
+          </figure>
+        ))}
+        <figure className={styles.figure}>
+          <div className={styles.fill}>
+            <Image
+              src={src}
+              blurDataURL={
+                typeof src === "string"
+                  ? formatBlurURL(src, { blur: 10 })
+                  : undefined
+              }
+              alt={`${alt} fill image`}
+              placeholder="blur"
+              fill
+            />
+          </div>
+          <figcaption>fill</figcaption>
+        </figure>
+      </div>
+    </article>
+  );
+};
+
 const Page = async () => {
   return (
-    <main>
-      <section>
-        <h1>Cloudflare Image Transformer</h1>
-        <article>
-          <h2>local image(public directory)</h2>
-          <Image
-            src="/images/main.png"
-            blurDataURL={formatBlurURL("/images/main.png", { blur: 10 })}
-            placeholder="blur"
-            alt="public local large image"
-            width={1000}
-            height={500}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src="/images/main.png"
-            blurDataURL={formatBlurURL("/images/main.png", { blur: 10 })}
-            alt="public local medium image"
-            placeholder="blur"
-            width={400}
-            height={200}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src="/images/main.png"
-            blurDataURL={formatBlurURL("/images/main.png", { blur: 10 })}
-            alt="public local small image"
-            placeholder="blur"
-            width={100}
-            height={50}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-        </article>
-
-        <article>
-          <h2>
-            local image(
-            <code>import image from &quot;@image/main.png&quot;</code>)
-          </h2>
-          <Image
-            src={image}
-            alt="public local large image"
-            width={1000}
-            height={500}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src={image}
-            alt="public local medium image"
-            placeholder="blur"
-            width={400}
-            height={200}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src={image}
-            alt="public local small image"
-            placeholder="blur"
-            width={100}
-            height={50}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-        </article>
-
-        <article>
-          <h2>remote image</h2>
-          <Image
-            src="https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png"
-            blurDataURL={formatBlurURL(
-              "https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png",
-              { blur: 10 },
-            )}
-            placeholder="blur"
-            alt="remote large image"
-            width={1000}
-            height={500}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src="https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png"
-            blurDataURL={formatBlurURL(
-              "https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png",
-              { blur: 10 },
-            )}
-            placeholder="blur"
-            alt="remote medium image"
-            width={400}
-            height={200}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-          <Image
-            src="https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png"
-            blurDataURL={formatBlurURL(
-              "https://public.napochaan.dev/images%2FComfyUI_LCM_00182_.png",
-              { blur: 10 },
-            )}
-            placeholder="blur"
-            alt="remote small image"
-            width={100}
-            height={50}
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-        </article>
-      </section>
-    </main>
+    <section className={styles.root}>
+      <h1 className={styles.h1}>
+        Demo of <code>next/image</code> using Cloudflare Transform images
+      </h1>
+      <div className={styles.articles}>
+        <Article
+          title="LOCAL IMAGE"
+          subTitle={<code>public/images/main.png</code>}
+          src="/images/main.png"
+          alt="public local"
+        />
+        <Article
+          title="LOCAL IMAGE"
+          subTitle={<code>import image from &quot;@images/main.png&quot;</code>}
+          src={image}
+          alt="imported local"
+        />
+        <Article
+          title="REMOTE IMAGE"
+          subTitle={<code>https://public.napochaan.dev</code>}
+          src="https://public.napochaan.dev/images/ComfyUI_LCM_00182_.png"
+          alt="remote"
+        />
+      </div>
+    </section>
   );
 };
 
