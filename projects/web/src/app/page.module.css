@@ -23,6 +23,9 @@
     justify-content: center;
     flex-wrap: wrap;
   }
+  .root {
+    max-width: 500px;
+  }
 }
 
 .h1 {
@@ -32,6 +35,14 @@
   margin: 0;
   font-weight: 500;
   margin-block: var(--leading-trim);
+  margin-bottom: 0.75rem;
+}
+
+.description {
+  font-size: 0.9rem;
+  color: color-mix(in srgb, black 75%, white);
+  margin-block: var(--leading-trim);
+
   margin-bottom: 2rem;
 }
 

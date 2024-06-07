@@ -79,6 +79,10 @@ const Page = async () => {
       <h1 className={styles.h1}>
         Demo of <code>next/image</code> using Cloudflare Transform images
       </h1>
+      <p className={styles.description}>
+        You can effectively view this by setting the network throttling profile
+        to &quot;Slow 3G&quot; in the DevTools network tab.
+      </p>
       <div className={styles.articles}>
         <Article
           title="LOCAL IMAGE"
