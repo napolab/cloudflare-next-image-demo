@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     creatorId: "@naporin24690",
     title: "Demo of `next/image` using Cloudflare Transform images",
     images: [
