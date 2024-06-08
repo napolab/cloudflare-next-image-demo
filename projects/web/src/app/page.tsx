@@ -4,6 +4,7 @@ import image from "@images/main.png";
 import styles from "./page.module.css";
 import type { StaticImport } from "next/dist/shared/lib/get-img-props";
 import { ReactNode } from "react";
+import Link from "next/link";
 
 export const runtime = "edge";
 
@@ -81,7 +82,10 @@ const Page = async () => {
       </h1>
       <p className={styles.description}>
         You can effectively view this by setting the network throttling profile
-        to &quot;Slow 3G&quot; in the DevTools network tab.
+        to &quot;Slow 3G&quot; in the DevTools network tab.{" "}
+        <Link href="https://github.com/napolab/cloudflare-next-image-demo">
+          GitHub
+        </Link>
       </p>
       <div className={styles.articles}>
         <Article

@@ -6,5 +6,6 @@ export default defineConfig({
   dts: true,
   splitting: false,
   clean: true,
+  minify: true,
   external: [/^cloudflare:/],
 });

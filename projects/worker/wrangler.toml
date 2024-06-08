@@ -1,4 +1,8 @@
 name = "next-image-demo"
-main = "./src/index.ts"
+main = "./dist/index.js"
 compatibility_date = "2024-05-12"
 workers_dev = false
+
+[build]
+command = "bun run build"
+watch_dir = "src"
