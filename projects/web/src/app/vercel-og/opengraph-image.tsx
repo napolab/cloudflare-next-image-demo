@@ -17,6 +17,8 @@ const Image = async () => {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          width: "100%",
+          height: "100%",
         }}
       >
         <h1>Hello, world!</h1>
