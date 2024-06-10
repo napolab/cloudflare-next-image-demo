@@ -9,6 +9,13 @@ export const generateMetadata = async (): Promise<Metadata> => {
 
   return {
     metadataBase: new URL("/", url),
+    description:
+      "This is an OpenGraph image demo on @cloudflare/next-on-pages.",
+    twitter: {
+      card: "summary_large_image",
+      description:
+        "This is an OpenGraph image demo on @cloudflare/next-on-pages.",
+    },
   };
 };
 
