@@ -1,11 +1,11 @@
 import { ImageResponse } from "@vercel/og";
 
-const size = {
+export const runtime = "edge";
+export const size = {
   width: 1200,
   height: 640,
 };
 
-export const runtime = "edge";
 export const contentType = "image/png";
 
 const Image = async () => {

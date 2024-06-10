@@ -3,6 +3,7 @@ import styles from "./layout.module.css";
 import "./global.css";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://next-demo.napochaan.dev"),
   title:
     "Demo of `next/image` using Cloudflare Transform images | napochaan.dev",
   description: "Demo of next/image using Cloudflare Transform images",
