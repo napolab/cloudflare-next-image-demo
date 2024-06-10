@@ -11,7 +11,14 @@ export const contentType = "image/png";
 const Image = async () => {
   return new ImageResponse(
     (
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
+      >
         <h1>Hello, world!</h1>
         <p>This is an OpenGraph image.</p>
       </div>
