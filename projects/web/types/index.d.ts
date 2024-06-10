@@ -1,9 +1,6 @@
-import type { ImageResizeWorker } from "@next-image-demo/worker";
-import { WorkerEntrypoint } from "cloudflare:workers";
-
 interface CloudflareEnv {
-  readonly IMAGE_RESIZE_WORKER: ImageResizeWorker;
-  readonly IMAGE_RESIZE: WorkerEntrypoint;
+  CF_PAGES_URL: string;
+  CF_PAGES_BRANCH: string;
 }
 
 declare global {
