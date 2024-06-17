@@ -1,5 +1,3 @@
-import { cache } from "hono/cache";
-import { etag } from "hono/etag";
 import { zValidator } from "@hono/zod-validator";
 
 import { factory } from "@handlers/transform-image/factory";
@@ -9,12 +7,6 @@ import { TransformOptionsWithURL } from "./schema";
 
 export const transformImageHandler = factory.createHandlers(
   preventResizeLoop,
-  cache({
-    cacheName: "transform-image",
-    vary: ["accept", "accept-encoding"],
-    cacheControl: "public, max-age=315360000, immutable",
-  }),
-  etag(),
   zValidator("query", TransformOptionsWithURL),
   async (c) => {
     const query = c.req.valid("query");
