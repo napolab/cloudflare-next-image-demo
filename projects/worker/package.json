@@ -1,29 +1,29 @@
 {
   "name": "@next-image-demo/worker",
   "type": "module",
-  "main": "dist/index.cjs",
-  "module": "dist/index.js",
+  "main": "src/index.ts",
+  "module": "src/index.ts",
   "types": "dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js",
-      "require": "./dist/index.cjs"
-    }
-  },
+  "files": [
+    "dist",
+    "src",
+    "README.md"
+  ],
   "scripts": {
     "dev": "wrangler dev src/index.ts",
     "deploy": "wrangler deploy --minify src/index.ts",
-    "build": "tsup"
+    "build": "tsup",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "hono": "^4.3.6",
-    "@hono/zod-validator": "^0.2.1",
+    "@hono/zod-validator": "^0.2.2",
+    "hono": "^4.4.9",
     "zod": "^3.23.8"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^4.20240403.0",
-    "tsup": "^8.0.2",
-    "wrangler": "^3.47.0"
+    "@cloudflare/workers-types": "^4.20240620.0",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2",
+    "wrangler": "^3.62.0"
   }
 }

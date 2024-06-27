@@ -6,7 +6,7 @@ import { transformImageHandler as transformURLImageHandler } from "@handlers/tra
 const app = new Hono();
 
 app.get("/_next/image", ...transformURLImageHandler);
-app.get("/_next/static/media/*", ...transformRawImageHandler);
+app.get("/_next/static/media/*.:ext{jpg|jpeg|webp|png|avif|gif}", ...transformRawImageHandler);
 app.get("/images/*", ...transformRawImageHandler);
 app.get("*", (c) => fetch(c.req.raw));
 
